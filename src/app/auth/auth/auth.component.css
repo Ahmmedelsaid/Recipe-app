@@ -1,0 +1,79 @@
+/* Style for the container */
+.container {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 20px;
+  background-color: #f4f4f4;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+}
+span {
+  color: red;
+}
+input.ng-invalid.ng-touched {
+  border: 1px solid red;
+}
+
+/* Style for the form */
+.form-group {
+  margin-bottom: 20px;
+}
+
+/* Style for labels */
+label {
+  font-weight: bold;
+  display: block;
+  margin-bottom: 5px;
+}
+
+/* Style for input fields */
+.form-control {
+  width: 100%;
+  padding: 10px;
+  border: none;
+  border-radius: 5px;
+  background-color: #e8e8e8;
+  box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.1);
+  transition: #e8e8e8 0.3s ease;
+}
+
+/* Style for input fields when focused */
+.form-control:focus {
+  background-color: #fff;
+  outline: none;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.2);
+}
+
+/* Style for buttons */
+.btn {
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
+}
+
+.lds-dual-ring {
+  display: inline-block;
+  width: 80px;
+  height: 80px;
+}
+.lds-dual-ring:after {
+  content: " ";
+  display: block;
+  width: 64px;
+  height: 64px;
+  margin: 8px;
+  border-radius: 50%;
+  border: 6px solid #2102cf;
+  border-color: #2102cf transparent #2102cf transparent;
+  animation: lds-dual-ring 1.2s linear infinite;
+}
+@keyframes lds-dual-ring {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}

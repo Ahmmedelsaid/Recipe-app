@@ -1,0 +1,52 @@
+<nav class="navbar navbar-expand-lg navbar-default">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button
+        type="button"
+        class="navbar-toggle"
+        (click)="collapsed = !collapsed"
+      >
+        <span class="icon-bar" *ngFor="let iconBar of [1, 2, 3]"></span>
+      </button>
+      <a href="#" class="navbar-brand">Recipe Book </a>
+    </div>
+    <div
+      class="collapse navbar-collapse"
+      [class.collapse]="collapsed"
+      (window.resize)="(collapsed)"
+    >
+      <ul class="nav navbar-nav">
+        <li role="presentation" routerLinkActive="active" *ngIf="isAuthorized">
+          <a routerLink="/recipes">Recipes</a>
+        </li>
+        <li role="presentation" routerLinkActive="active" *ngIf="!isAuthorized">
+          <a routerLink="/auth">Registration</a>
+        </li>
+        <li role="presentation" routerLinkActive="active">
+          <a routerLink="/shopping-list">Shopping List</a>
+        </li>
+      </ul>
+      <ul class="nav navbar-nav navbar-right">
+        <li *ngIf="isAuthorized">
+          <a style="cursor: pointer" (click)="onLogout()">Logout</a>
+        </li>
+        <li *ngIf="isAuthorized" class="dropdown" appDropdown>
+          <a class="dropdown-toggle" role="button"
+            >Manage <span class="caret"></span
+          ></a>
+          <ul class="dropdown-menu">
+            <li>
+              <a style="cursor: pointer" (click)="saveRecipes()">Save Data</a>
+            </li>
+            <li>
+              <a style="cursor: pointer" (click)="fetchRecipes()">Fetch Data</a>
+            </li>
+            <li>
+              <a style="cursor: pointer" (click)="ClearRecipes()">Clear Data</a>
+            </li>
+          </ul>
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

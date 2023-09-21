@@ -1,0 +1,104 @@
+<div class="container">
+  <div class="row">
+    <div class="col-xs-12 col-md-6 col-md-offset-3">
+      <app-alert
+        [message]="error"
+        *ngIf="error"
+        (close)="handleError()"
+      ></app-alert>
+      <div
+        *ngIf="isLoading"
+        class="lds-dual-ring"
+        style="text-align: center"
+      ></div>
+      <form
+        #AuthForm="ngForm"
+        (ngSubmit)="onSubmit(AuthForm)"
+        *ngIf="!isLoading"
+      >
+        <div class="form-group" *ngIf="!isLogin">
+          <label for="username">Username</label>
+          <input
+            type="text"
+            id="username"
+            class="form-control"
+            required
+            ngModel
+            name="username"
+            pattern="^[A-Z][A-Za-z0-9 _-]{1,20}$"
+            #username="ngModel"
+          />
+          <span class="help-block" *ngIf="!username.valid && username.touched"
+            >Username should start with a capital letter!</span
+          >
+        </div>
+        <div class="form-group">
+          <label for="email">Email</label>
+          <input
+            type="email"
+            id="email"
+            class="form-control"
+            required
+            ngModel
+            name="email"
+            #email="ngModel"
+            pattern="^[a-zA-Z0-9._%+-]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,4}$"
+          />
+
+          <span class="help-block" *ngIf="!email.valid && email.touched"
+            >Please enter a valid email.</span
+          >
+        </div>
+        <div class="form-group">
+          <label for="pass">Password</label>
+          <input
+            type="password"
+            id="pass"
+            class="form-control"
+            required
+            ngModel
+            name="pass"
+            #pass="ngModel"
+            pattern="^(?=.*[a-z])(?=.*[A-Z])(?=.*\d)(?=.*[@$!%*?&])[A-Za-z\d@$!%*?&]{8,}$"
+          />
+
+          <span class="help-block" *ngIf="!pass.valid && pass.touched">
+            Password should be at least 8 characters long and include at least
+            one lowercase letter, one uppercase letter, one digit, and one
+            special character (@$!%*?&).
+          </span>
+        </div>
+
+        <div class="form-group" *ngIf="!isLogin">
+          <label for="num">Phone Number</label>
+          <input
+            type="text"
+            id="num"
+            class="form-control"
+            required
+            ngModel
+            name="num"
+            #num="ngModel"
+            pattern="^[0-9]{11}$"
+          />
+          <span class="help-block" *ngIf="!num.valid && num.touched"
+            >Numbers Only!</span
+          >
+        </div>
+        <div>
+          <button
+            [disabled]="!AuthForm.valid"
+            class="btn btn-success"
+            type="submit"
+          >
+            {{ isLogin ? "Login" : "Sign up" }}
+          </button>
+          |
+          <button class="btn btn-primary" (click)="onSwitch()" type="button">
+            Switch to {{ isLogin ? "Sign up" : "Login" }}
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,20 @@
+<div class="row">
+  <div class="col-xs-12">
+    <button class="btn btn-success btn-lg" (click)="onAddRecipe()">
+      New Recipe
+    </button>
+  </div>
+</div>
+<hr />
+<div class="row">
+  <div class="col-xs-12">
+    <app-recipe-item
+      *ngFor="let Recipe of Recipes; let i = index"
+      [recipe]="Recipe"
+      [index]="i"
+    >
+    </app-recipe-item>
+    <p *ngIf="Recipes.length < 1">No Recipes Available! <br/> Please add some.</p>
+     <p *ngIf="isFetching">Loading...</p>
+  </div>
+</div>
